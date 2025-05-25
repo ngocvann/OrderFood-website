@@ -27,7 +27,7 @@ public class AdminOrderController {
     public ResponseEntity<String> deleteOrder(@PathVariable Long orderId) throws OrderException{
     	if(orderId!=null) {
     		orderService.cancelOrder(orderId);
-    	return ResponseEntity.ok("Order deleted with id)"+orderId);
+    	return ResponseEntity.ok("Xóa thành công!)");
     }else return new ResponseEntity<String>(HttpStatus.BAD_REQUEST) ;
     }
     

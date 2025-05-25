@@ -12,6 +12,6 @@ public class HomeController {
 
     @GetMapping("/")
     public ResponseEntity<String> homeController() {
-        return new ResponseEntity<>("Welcome to Food Delivery System Api", HttpStatus.OK);
+        return new ResponseEntity<>("Hello", HttpStatus.OK);
     }
 }

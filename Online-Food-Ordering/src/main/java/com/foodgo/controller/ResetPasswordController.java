@@ -46,7 +46,7 @@ public class ResetPasswordController {
         passwordResetTokenService.delete(resetToken);
         
         ApiResponse res=new ApiResponse();
-        res.setMessage("Password updated successfully.");
+        res.setMessage("Mật khẩu đã được cập nhật.");
         res.setStatus(true);
 
         return ResponseEntity.ok(res);
@@ -58,13 +58,13 @@ public class ResetPasswordController {
         System.out.println("ResetPasswordController.resetPassword()");
 
         if (user == null) {
-        	throw new UserException("user not found");
+        	throw new UserException("Ko tìm thấy người dùng");
         }
 
         userService.sendPasswordResetEmail(user);
 
         ApiResponse res=new ApiResponse();
-        res.setMessage("Password reset email sent successfully.");
+        res.setMessage("Mật khẩu đặt lại đã được gửi thành công.");
         res.setStatus(true);
 
         return ResponseEntity.ok(res);
