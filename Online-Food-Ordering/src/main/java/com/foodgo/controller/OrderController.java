@@ -39,7 +39,7 @@ public class OrderController {
 			PaymentResponse res = orderService.createOrder(order,user);
 			return ResponseEntity.ok(res);
 			
-    	}else throw new OrderException("Please provide valid request body");
+    	}else throw new OrderException("Vui lòng cung cấp thông tin hợp lệ!");
 		
     }
     

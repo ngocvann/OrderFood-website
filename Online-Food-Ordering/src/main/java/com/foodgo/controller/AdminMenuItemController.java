@@ -51,7 +51,7 @@ public class AdminMenuItemController {
 		User user = userService.findUserProfileByJwt(jwt);
 		
 			menuItemService.deleteFood(id);
-			return ResponseEntity.ok("Menu item deleted");
+			return ResponseEntity.ok("Xóa thành công.");
 		
 	
 	}

@@ -51,7 +51,7 @@ public class AdminRestaurantController {
 		
 			restaurantService.deleteRestaurant(restaurantId);
 			
-			ApiResponse res=new ApiResponse("Restaurant Deleted with id Successfully",true);
+			ApiResponse res=new ApiResponse("Xóa thành công!",true);
 			return ResponseEntity.ok(res);
 	}
 

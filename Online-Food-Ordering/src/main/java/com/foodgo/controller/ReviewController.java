@@ -34,7 +34,7 @@ public class ReviewController {
 	    @DeleteMapping("/delete/{reviewId}")
 	    public ResponseEntity<String> deleteReview(@PathVariable Long reviewId) throws ReviewException {
 	        reviewService.deleteReview(reviewId);
-	        return new ResponseEntity<>("Review deleted successfully", HttpStatus.OK);
+	        return new ResponseEntity<>("Xóa thành công", HttpStatus.OK);
 	    }
 
 	    @GetMapping("/average-rating")

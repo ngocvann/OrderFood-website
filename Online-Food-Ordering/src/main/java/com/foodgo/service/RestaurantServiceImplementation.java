@@ -35,7 +35,6 @@ public class RestaurantServiceImplementation implements RestaurantService {
 		address.setCity(req.getAddress().getCity());
 		address.setCountry(req.getAddress().getCountry());
 		address.setFullName(req.getAddress().getFullName());
-		address.setPostalCode(req.getAddress().getPostalCode());
 		address.setState(req.getAddress().getState());
 		address.setStreetAddress(req.getAddress().getStreetAddress());
 		Address savedAddress = addressRepository.save(address);
