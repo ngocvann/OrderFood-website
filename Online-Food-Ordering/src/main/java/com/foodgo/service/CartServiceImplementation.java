@@ -10,6 +10,7 @@ import com.foodgo.model.Food;
 import com.foodgo.model.User;
 import com.foodgo.repository.CartItemRepository;
 import com.foodgo.repository.CartRepository;
+import com.foodgo.repository.UserRepository;
 import com.foodgo.repository.foodRepository;
 import com.foodgo.request.AddCartItemRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class CartServiceImplementation implements CartSerive {
 	private CartItemRepository cartItemRepository;
 	@Autowired
 	private foodRepository menuItemRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 	@Override
 	public CartItem addItemToCart(AddCartItemRequest req, String jwt) throws UserException, FoodException, CartException, CartItemException {
@@ -112,15 +115,17 @@ public class CartServiceImplementation implements CartSerive {
 	}
 
 	@Override
-	public Cart findCartByUserId(Long userId) throws CartException, UserException {
-	
-		Optional<Cart> opt=cartRepository.findByCustomer_Id(userId);
-		
-		if(opt.isPresent()) {
+	public Cart findCartByUserId(Long userId) throws UserException {
+		Optional<Cart> opt = cartRepository.findByCustomer_Id(userId);
+		if (opt.isPresent()) {
 			return opt.get();
 		}
-		throw new CartException("cart not found");
-		
+
+		User user = userService.findUserById(userId); // bạn có thể viết thêm hàm này trong UserService
+		Cart newCart = new Cart();
+		newCart.setCustomer(user);
+		newCart.setTotal(0L); // hoặc BigDecimal nếu cần
+		return cartRepository.save(newCart);
 	}
 
 	@Override
@@ -131,6 +136,5 @@ public class CartServiceImplementation implements CartSerive {
 		return cartRepository.save(cart);
 	}
 
-	
 
 }

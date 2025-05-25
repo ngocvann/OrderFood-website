@@ -20,12 +20,13 @@ public class CategoryServiceImplementation implements CategoryService {
 	private CategoryRepository categoryRepository;
 
 	@Override
-	public Category createCategory(String name,Long userId) throws RestaurantException {
-		Restaurant restaurant=restaurantService.getRestaurantsByUserId(userId);
-		Category createdCategory=new Category();
-		
+	public Category createCategory(String name, Long restaurantId) throws RestaurantException {
+		Restaurant restaurant = restaurantService.findRestaurantById(restaurantId); // ✅ lấy theo restaurantId
+
+		Category createdCategory = new Category();
 		createdCategory.setName(name);
 		createdCategory.setRestaurant(restaurant);
+
 		return categoryRepository.save(createdCategory);
 	}
 

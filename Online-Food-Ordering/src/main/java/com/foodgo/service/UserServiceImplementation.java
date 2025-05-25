@@ -122,6 +122,11 @@ public class UserServiceImplementation implements UserService {
 		throw new UserException("user not exist with username "+username);
 	}
 
+	@Override
+	public User findUserById(Long id) throws UserException {
+		return userRepository.findById(id)
+				.orElseThrow(() -> new UserException("User not found with id: " + id));
+	}
 
 
 }
