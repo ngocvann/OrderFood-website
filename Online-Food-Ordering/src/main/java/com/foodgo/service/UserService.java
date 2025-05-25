@@ -19,4 +19,7 @@ public interface UserService {
 
 	void sendPasswordResetEmail(User user);
 
+	User findUserById(Long id) throws UserException;
+
+
 }

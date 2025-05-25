@@ -19,4 +19,5 @@ public interface IngredientsItemRepository extends JpaRepository<IngredientsItem
 			@Param("restaurantId") Long restaurantId, 
 			@Param("name") String name,
 			@Param("categoryName") String categoryName);
+
 }

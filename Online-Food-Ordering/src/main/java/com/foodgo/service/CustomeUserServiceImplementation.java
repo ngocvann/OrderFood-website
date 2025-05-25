@@ -32,7 +32,9 @@ public class CustomeUserServiceImplementation implements UserDetailsService {
 
 			throw new UsernameNotFoundException("user not found with email  - "+username);
 		}
-		
+		if (user.getStatus() == null || !"1".equals(user.getStatus())) {
+			throw new UsernameNotFoundException("Tài khoản chưa được xác thực qua email.");
+		}
 		USER_ROLE role=user.getRole();
 		
 		if(role==null) role=USER_ROLE.ROLE_CUSTOMER;
